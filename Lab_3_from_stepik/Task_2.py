@@ -1,39 +1,28 @@
 def find_common_participants(first_str, second_str, separator=","):
-    result = []
 
-    first_list = []
+    first_set = set()
     buffer_name = ""
     for i in range(0, len(first_str)):
         if first_str[i] == separator:
-            first_list.append(buffer_name)
+            first_set.add(buffer_name)
             buffer_name = ""
         else:
             buffer_name += first_str[i]
-    first_list.append(buffer_name)
+    first_set.add(buffer_name)
 
-    second_list = []
+    second_set = set()
     buffer_name = ""
     for i in range(0, len(second_str)):
         if second_str[i] == separator:
-            second_list.append(buffer_name)
+            second_set.add(buffer_name)
             buffer_name = ""
         else:
             buffer_name += second_str[i]
-    second_list.append(buffer_name)
+    second_set.add(buffer_name)
 
-    # для перебора меньшего списка и ускорения тем самым процесса
-    smallest_list = []
-    biggest_list = []
-    if len(first_list) > len(second_list):
-        smallest_list = second_list
-        biggest_list = first_list
-    else:
-        smallest_list = first_list
-        biggest_list = second_list
+    result =set()
+    result = first_set.intersection(second_set)
 
-    for person in smallest_list:
-        if biggest_list.count(person):
-            result.append(person)
 
     return result
 

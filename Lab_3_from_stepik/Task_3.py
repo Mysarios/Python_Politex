@@ -1,26 +1,13 @@
 import math
 def count_letters(text):
-    #ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    #alphabet = "abcdefghijklmnopqrstuvwxyz"
-    ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
-    alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
     count_symbols = {}
-    #for symbol in alphabet:
-        #count_symbols[symbol] = 0
     for symbol in text:
-        for i in range(0, len(ALPHABET)):
-            if symbol == ALPHABET[i]:
-                if alphabet[i] not in count_symbols:
-                    count_symbols[alphabet[i]] = 0
+            if symbol.isalpha():
+                if symbol.lower() not in count_symbols:
+                    count_symbols[symbol.lower()] = 0
                 else:
-                    count_symbols[alphabet[i]] += 1
-                break
-            if symbol == alphabet[i]:
-                if symbol not in count_symbols:
-                    count_symbols[alphabet[i]] = 0
-                else:
-                    count_symbols[alphabet[i]] += 1
-                break
+                    count_symbols[symbol.lower()] += 1
+
 
     return count_symbols
 
@@ -71,7 +58,6 @@ main_str = """
 Под ним сидел, и кот учёный
 Свои мне сказки говорил.
 """
-
 
 result_dict = calculate_frequency(count_letters(main_str))
 
